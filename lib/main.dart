@@ -270,6 +270,7 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
           child: Stack(
             children: <Widget>[
               Positioned(
+                top: 22,
                 child: AspectRatio(
                   aspectRatio: 8 / 5,
                   child: Container(
@@ -284,7 +285,8 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
               Positioned(
                   child: Container(
                 height: 40,
-              ))
+              )),
+              appBarShadow()
             ],
           ),
 
@@ -297,8 +299,14 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
 
   //shadow top appbar
   Widget appBarShadow() {
-    return Container(
-      color: Colors.blue,
+    return Positioned(
+      child: Container(
+          height: 40,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.black, Colors.black, Colors.transparent]))),
     );
   }
 
