@@ -322,11 +322,13 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
             onTap: () {
               if (!isSwiped) {
                 setState(() {
+                  animDuration = 200;
                   xPosition = MediaQuery.of(context).size.width / 2;
                   isSwiped = !isSwiped;
                 });
               } else {
                 setState(() {
+                  animDuration = 200;
                   xPosition = 0;
                   isSwiped = !isSwiped;
                 });
