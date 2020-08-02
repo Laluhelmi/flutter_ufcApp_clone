@@ -222,14 +222,21 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
       duration: Duration(milliseconds: animDuration),
       top: 0,
       left: xPosition,
-      child: GestureDetector(
-        onPanStart: (info) {
-          if (info.globalPosition.dx < 30 || isSwiped) {
+      child: Listener(
+        onPointerDown: (info) {
+          print("pertama sentuh");
+          // onPanStart: (info) {
+          if (info.localPosition.dx < 30 || isSwiped) {
             isDragTrue = true;
             isSwiped = false;
           }
+          // },
         },
-        onPanEnd: (info) {
+        onPointerCancel: (event) {
+          print("pointer cancel");
+        },
+        onPointerUp: (info) {
+          print("pointer up");
           if (xPosition <= MediaQuery.of(context).size.width / 2 &&
               isDragTrue) {
             setState(() {
@@ -245,7 +252,11 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
           }
           isDragTrue = false;
         },
-        onPanUpdate: (tapInfo) {
+        onPointerMove: (tapInfo) {
+          print("pointer move");
+          double dx = xPosition;
+          //  print("delta " + tapInfo.delta.dx.toString());
+          dx += tapInfo.delta.dx;
           if (isDragTrue) {
             double dx = xPosition;
             //  print("delta " + tapInfo.delta.dx.toString());
@@ -263,6 +274,46 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
             }
           }
         },
+        // onPanStart: (info) {
+        //   if (info.globalPosition.dx < 30 || isSwiped) {
+        //     isDragTrue = true;
+        //     isSwiped = false;
+        //   }
+        // },
+        // onPanEnd: (info) {
+        //   if (xPosition <= MediaQuery.of(context).size.width / 2 &&
+        //       isDragTrue) {
+        //     setState(() {
+        //       animDuration = 200;
+        //       xPosition = 0;
+        //     });
+        //   } else if (isDragTrue) {
+        //     setState(() {
+        //       animDuration = 200;
+        //       xPosition = MediaQuery.of(context).size.width / 2;
+        //     });
+        //     isSwiped = true;
+        //   }
+        //   isDragTrue = false;
+        // },
+        // onPanUpdate: (tapInfo) {
+        //   if (isDragTrue) {
+        //     double dx = xPosition;
+        //     //  print("delta " + tapInfo.delta.dx.toString());
+        //     dx += tapInfo.delta.dx;
+        //     if (dx <= 0) {
+        //       setState(() {
+        //         //  yPosition += tapInfo.delta.dy;
+        //         xPosition = 0;
+        //       });
+        //     } else if (dx <= (MediaQuery.of(context).size.width / 2) + 10) {
+        //       setState(() {
+        //         //  yPosition += tapInfo.delta.dy;
+        //         xPosition = dx;
+        //       });
+        //     }
+        //   }
+        // },
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -271,15 +322,16 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
             children: <Widget>[
               Positioned(
                 top: 22,
-                child: AspectRatio(
-                  aspectRatio: 8 / 5,
-                  child: Container(
-                    color: Colors.green,
-                    child: Image.asset(
-                      'assets/poster/ufc-241.png',
-                      fit: BoxFit.fill,
-                    ),
-                  ),
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  color: Colors.green,
+                  child: _listFight(),
+                  // child: Image.asset(
+                  //   'assets/poster/ufc-241.png',
+                  //   fit: BoxFit.fill,
+                  // ),
                 ),
               ),
               Positioned(
@@ -359,6 +411,122 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
           spreadRadius: 5,
           blurRadius: 7,
           offset: Offset(0, 3), // changes position of shadow
+        ),
+      ],
+    );
+  }
+
+  Widget _listFight() {
+    return ListView(
+      padding: const EdgeInsets.all(8),
+      physics: isDragTrue
+          ? const NeverScrollableScrollPhysics()
+          : const AlwaysScrollableScrollPhysics(),
+      children: <Widget>[
+        Container(
+          height: 50,
+          color: Colors.amber[600],
+          child: const Center(child: Text('Entry A')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[500],
+          child: const Center(child: Text('Entry B')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[100],
+          child: const Center(child: Text('Entry C')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[600],
+          child: const Center(child: Text('Entry A')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[500],
+          child: const Center(child: Text('Entry B')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[100],
+          child: const Center(child: Text('Entry C')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[600],
+          child: const Center(child: Text('Entry A')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[500],
+          child: const Center(child: Text('Entry B')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[100],
+          child: const Center(child: Text('Entry C')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[600],
+          child: const Center(child: Text('Entry A')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[500],
+          child: const Center(child: Text('Entry B')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[100],
+          child: const Center(child: Text('Entry C')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[600],
+          child: const Center(child: Text('Entry A')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[500],
+          child: const Center(child: Text('Entry B')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[100],
+          child: const Center(child: Text('Entry C')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[600],
+          child: const Center(child: Text('Entry A')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[500],
+          child: const Center(child: Text('Entry B')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[100],
+          child: const Center(child: Text('Entry C')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[600],
+          child: const Center(child: Text('Entry A')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[500],
+          child: const Center(child: Text('Entry B')),
+        ),
+        Container(
+          height: 50,
+          color: Colors.amber[100],
+          child: const Center(child: Text('Entry C')),
         ),
       ],
     );
