@@ -286,7 +286,8 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
                   child: Container(
                 height: 40,
               )),
-              appBarShadow()
+              appBarShadow(),
+              appBar()
             ],
           ),
 
@@ -301,12 +302,48 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
   Widget appBarShadow() {
     return Positioned(
       child: Container(
-          height: 40,
+          height: 50,
           decoration: BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [Colors.black, Colors.black, Colors.transparent]))),
+    );
+  }
+
+  Widget appBar() {
+    return Positioned(
+      top: 23,
+      left: 15,
+      right: 0,
+      child: Row(
+        children: <Widget>[
+          GestureDetector(
+            onTap: () {
+              if (!isSwiped) {
+                setState(() {
+                  xPosition = MediaQuery.of(context).size.width / 2;
+                  isSwiped = !isSwiped;
+                });
+              } else {
+                setState(() {
+                  xPosition = 0;
+                  isSwiped = !isSwiped;
+                });
+              }
+            },
+            child: Image.asset("assets/menus/menu.png", height: 25, width: 25),
+          ),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Image.asset("assets/menus/ufc.png", height: 55, width: 55),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
