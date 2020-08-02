@@ -326,7 +326,7 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
                 left: 0,
                 right: 0,
                 child: Container(
-                  color: Colors.green,
+                  color: Colors.black,
                   child: _listFight(),
                   // child: Image.asset(
                   //   'assets/poster/ufc-241.png',
@@ -418,114 +418,50 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
 
   Widget _listFight() {
     return ListView(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(0),
       physics: isDragTrue
           ? const NeverScrollableScrollPhysics()
           : const AlwaysScrollableScrollPhysics(),
       children: <Widget>[
-        Container(
-          height: 50,
-          color: Colors.amber[600],
-          child: const Center(child: Text('Entry A')),
+        Stack(
+          children: <Widget>[
+            Positioned(
+                child: AspectRatio(
+              aspectRatio: 8 / 5,
+              child: Container(
+                color: Colors.blue,
+                child: Image.asset(
+                  'assets/poster/ufc-241.png',
+                  fit: BoxFit.fill,
+                ),
+              ),
+            )),
+            Positioned(
+              right: 0,
+              left: 0,
+              bottom: 0,
+              child: Container(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topCenter,
+                          colors: [
+                        Colors.black,
+                        Colors.transparent,
+                        Colors.transparent
+                      ])),
+                  height: 80),
+            )
+          ],
         ),
         Container(
           height: 50,
-          color: Colors.amber[500],
+          color: Colors.black,
           child: const Center(child: Text('Entry B')),
         ),
         Container(
           height: 50,
-          color: Colors.amber[100],
-          child: const Center(child: Text('Entry C')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[600],
-          child: const Center(child: Text('Entry A')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[500],
-          child: const Center(child: Text('Entry B')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[100],
-          child: const Center(child: Text('Entry C')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[600],
-          child: const Center(child: Text('Entry A')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[500],
-          child: const Center(child: Text('Entry B')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[100],
-          child: const Center(child: Text('Entry C')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[600],
-          child: const Center(child: Text('Entry A')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[500],
-          child: const Center(child: Text('Entry B')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[100],
-          child: const Center(child: Text('Entry C')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[600],
-          child: const Center(child: Text('Entry A')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[500],
-          child: const Center(child: Text('Entry B')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[100],
-          child: const Center(child: Text('Entry C')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[600],
-          child: const Center(child: Text('Entry A')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[500],
-          child: const Center(child: Text('Entry B')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[100],
-          child: const Center(child: Text('Entry C')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[600],
-          child: const Center(child: Text('Entry A')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[500],
-          child: const Center(child: Text('Entry B')),
-        ),
-        Container(
-          height: 50,
-          color: Colors.amber[100],
+          color: Colors.black,
           child: const Center(child: Text('Entry C')),
         ),
       ],
