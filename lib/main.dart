@@ -493,16 +493,6 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
               fit: BoxFit.fill,
             ),
           ),
-        ),
-        AspectRatio(
-          aspectRatio: 8 / 5,
-          child: Container(
-            color: Colors.blue,
-            child: Image.asset(
-              'assets/poster/ufc-241.png',
-              fit: BoxFit.fill,
-            ),
-          ),
         )
       ],
     );
