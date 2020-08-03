@@ -237,7 +237,7 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
         },
         onPointerUp: (info) {
           print("pointer up");
-          if (xPosition <= MediaQuery.of(context).size.width / 2 &&
+          if (xPosition <= MediaQuery.of(context).size.width / 4 &&
               isDragTrue) {
             setState(() {
               animDuration = 200;
@@ -454,16 +454,56 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
             )
           ],
         ),
-        Container(
-          height: 50,
-          color: Colors.black,
-          child: const Center(child: Text('Entry B')),
+        AspectRatio(
+          aspectRatio: 8 / 5,
+          child: Container(
+            color: Colors.blue,
+            child: Image.asset(
+              'assets/poster/ufc-241.png',
+              fit: BoxFit.fill,
+            ),
+          ),
         ),
-        Container(
-          height: 50,
-          color: Colors.black,
-          child: const Center(child: Text('Entry C')),
+        AspectRatio(
+          aspectRatio: 8 / 5,
+          child: Container(
+            color: Colors.blue,
+            child: Image.asset(
+              'assets/poster/ufc-241.png',
+              fit: BoxFit.fill,
+            ),
+          ),
         ),
+        AspectRatio(
+          aspectRatio: 8 / 5,
+          child: Container(
+            color: Colors.blue,
+            child: Image.asset(
+              'assets/poster/ufc-241.png',
+              fit: BoxFit.fill,
+            ),
+          ),
+        ),
+        AspectRatio(
+          aspectRatio: 8 / 5,
+          child: Container(
+            color: Colors.blue,
+            child: Image.asset(
+              'assets/poster/ufc-241.png',
+              fit: BoxFit.fill,
+            ),
+          ),
+        ),
+        AspectRatio(
+          aspectRatio: 8 / 5,
+          child: Container(
+            color: Colors.blue,
+            child: Image.asset(
+              'assets/poster/ufc-241.png',
+              fit: BoxFit.fill,
+            ),
+          ),
+        )
       ],
     );
   }
