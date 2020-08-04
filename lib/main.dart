@@ -427,7 +427,7 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
           children: <Widget>[
             Positioned(
                 child: AspectRatio(
-              aspectRatio: 8 / 5,
+              aspectRatio: 18 / 12,
               child: Container(
                 color: Colors.blue,
                 child: Image.asset(
@@ -436,6 +436,30 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
                 ),
               ),
             )),
+            Positioned(
+                top: 50,
+                left: 15,
+                right: 0,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      "INVICTA FC 41: CORMIER VS MIOCIC",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 26,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      "Sun, Aug 15, 2020 8:00 AM",
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold),
+                    )
+                  ],
+                )),
             Positioned(
               right: 0,
               left: 0,
@@ -454,46 +478,6 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
             )
           ],
         ),
-        AspectRatio(
-          aspectRatio: 8 / 5,
-          child: Container(
-            color: Colors.blue,
-            child: Image.asset(
-              'assets/poster/ufc-241.png',
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
-        AspectRatio(
-          aspectRatio: 8 / 5,
-          child: Container(
-            color: Colors.blue,
-            child: Image.asset(
-              'assets/poster/ufc-241.png',
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
-        AspectRatio(
-          aspectRatio: 8 / 5,
-          child: Container(
-            color: Colors.blue,
-            child: Image.asset(
-              'assets/poster/ufc-241.png',
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
-        AspectRatio(
-          aspectRatio: 8 / 5,
-          child: Container(
-            color: Colors.blue,
-            child: Image.asset(
-              'assets/poster/ufc-241.png',
-              fit: BoxFit.fill,
-            ),
-          ),
-        )
       ],
     );
   }
