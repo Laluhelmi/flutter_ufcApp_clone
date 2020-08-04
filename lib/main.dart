@@ -457,104 +457,182 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
   }
 
   Widget _listFight() {
-    return ListView(
-      padding: const EdgeInsets.all(0),
+    return ListView.builder(
       physics: isDragTrue
           ? const NeverScrollableScrollPhysics()
           : const AlwaysScrollableScrollPhysics(),
-      children: <Widget>[
-        Stack(
-          children: <Widget>[
-            Positioned(
-                child: AspectRatio(
-              aspectRatio: 18 / 12,
-              child: Container(
-                color: Colors.blue,
-                child: Image.asset(
-                  'assets/poster/ufc251.jpg',
-                  fit: BoxFit.fill,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        if (index == 0) {
+          return Stack(
+            children: <Widget>[
+              Positioned(
+                  child: AspectRatio(
+                aspectRatio: 18 / 12,
+                child: Container(
+                  color: Colors.blue,
+                  child: Image.asset(
+                    'assets/poster/ufc251.jpg',
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              ),
-            )),
-            Positioned(
-                top: 50,
-                left: 15,
-                right: 0,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      "INVICTA FC 41: CORMIER VS MIOCIC",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      "Sun, Aug 15, 2020 8:00 AM",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
-                )),
-            Positioned(
-                left: 15,
-                right: 15,
-                bottom: 20,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 5),
-                      child: Text(
-                        "EVENT STARTS IN",
+              )),
+              Positioned(
+                  top: 50,
+                  left: 15,
+                  right: 0,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        "INVICTA FC 41: CORMIER VS MIOCIC",
                         style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 26,
                             fontWeight: FontWeight.bold),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      mainAxisSize: MainAxisSize.max,
-                      children: <Widget>[
-                        _time("00", "DAYS"),
-                        _time("07", "HOURS"),
-                        _time("33", "MINUTES"),
-                        _time("04", "SECONDS"),
-                      ],
-                    )
-                  ],
-                )),
-            Positioned(
-              right: 0,
-              left: 0,
-              bottom: 0,
-              child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topCenter,
-                          colors: [
-                        Colors.black,
-                        Colors.transparent,
-                        Colors.transparent
-                      ])),
-                  height: 80),
-            )
-          ],
-        ),
-        otherEvent(
-            "brunsonufc.jpeg",
-            "LIVE THIS WEEK",
-            "UFC FIGHT NIGHT: BRUNSON VS SHAHBAZYAN PRELIMS",
-            "Sat,Aug 1,2020 9:00 Am"),
-        otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
-            "Sun,Aug 15,2020 9:00 Am"),
-      ],
+                      Text(
+                        "Sun, Aug 15, 2020 8:00 AM",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold),
+                      )
+                    ],
+                  )),
+              Positioned(
+                  left: 15,
+                  right: 15,
+                  bottom: 20,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(bottom: 5),
+                        child: Text(
+                          "EVENT STARTS IN",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisSize: MainAxisSize.max,
+                        children: <Widget>[
+                          _time("00", "DAYS"),
+                          _time("07", "HOURS"),
+                          _time("33", "MINUTES"),
+                          _time("04", "SECONDS"),
+                        ],
+                      )
+                    ],
+                  )),
+              Positioned(
+                right: 0,
+                left: 0,
+                bottom: 0,
+                child: Container(
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [
+                          Colors.black,
+                          Colors.transparent,
+                          Colors.transparent
+                        ])),
+                    height: 80),
+              )
+            ],
+          );
+        } else {
+          return otherEvent(
+              "brunsonufc.jpeg",
+              "LIVE THIS WEEK",
+              "UFC FIGHT NIGHT: BRUNSON VS SHAHBAZYAN PRELIMS",
+              "Sat,Aug 1,2020 9:00 Am");
+        }
+      },
     );
+
+    // return ListView(
+    //   padding: const EdgeInsets.all(0),
+    //   physics: isDragTrue
+    //       ? const NeverScrollableScrollPhysics()
+    //       : const AlwaysScrollableScrollPhysics(),
+    //   children: <Widget>[
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //     otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+    //         "Sun,Aug 15,2020 9:00 Am"),
+    //   ],
+    // );
   }
 }
