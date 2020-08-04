@@ -274,46 +274,6 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
             }
           }
         },
-        // onPanStart: (info) {
-        //   if (info.globalPosition.dx < 30 || isSwiped) {
-        //     isDragTrue = true;
-        //     isSwiped = false;
-        //   }
-        // },
-        // onPanEnd: (info) {
-        //   if (xPosition <= MediaQuery.of(context).size.width / 2 &&
-        //       isDragTrue) {
-        //     setState(() {
-        //       animDuration = 200;
-        //       xPosition = 0;
-        //     });
-        //   } else if (isDragTrue) {
-        //     setState(() {
-        //       animDuration = 200;
-        //       xPosition = MediaQuery.of(context).size.width / 2;
-        //     });
-        //     isSwiped = true;
-        //   }
-        //   isDragTrue = false;
-        // },
-        // onPanUpdate: (tapInfo) {
-        //   if (isDragTrue) {
-        //     double dx = xPosition;
-        //     //  print("delta " + tapInfo.delta.dx.toString());
-        //     dx += tapInfo.delta.dx;
-        //     if (dx <= 0) {
-        //       setState(() {
-        //         //  yPosition += tapInfo.delta.dy;
-        //         xPosition = 0;
-        //       });
-        //     } else if (dx <= (MediaQuery.of(context).size.width / 2) + 10) {
-        //       setState(() {
-        //         //  yPosition += tapInfo.delta.dy;
-        //         xPosition = dx;
-        //       });
-        //     }
-        //   }
-        // },
         child: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
@@ -453,7 +413,7 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
                 child:
                     Image.asset("assets/menus/menu.png", height: 25, width: 25),
               )),
-          Expanded(
+          Positioned(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
