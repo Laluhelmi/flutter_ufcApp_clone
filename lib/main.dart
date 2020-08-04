@@ -363,31 +363,96 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
     );
   }
 
+  Widget otherEvent(String image, String title, String eventName, String time) {
+    return Padding(
+        padding: EdgeInsets.only(top: 30, left: 15, right: 15),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+                padding: EdgeInsets.only(bottom: 15),
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    //fontWeight: FontWeight.bold
+                  ),
+                )),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Image.asset(
+                  'assets/poster/' + image,
+                  fit: BoxFit.fill,
+                  width: 160,
+                  height: 90,
+                ),
+                Expanded(
+                  child: Padding(
+                      padding: EdgeInsets.only(
+                        left: 20,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            eventName,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(top: 10),
+                            child: Text(
+                              time,
+                              style: TextStyle(
+                                  color: Color(0xffb0aeae),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      )),
+                )
+              ],
+            )
+          ],
+        ));
+  }
+
   Widget appBar() {
     return Positioned(
-      top: 23,
+      top: 20,
       left: 15,
       right: 0,
-      child: Row(
+      child: Stack(
         children: <Widget>[
-          GestureDetector(
-            onTap: () {
-              if (!isSwiped) {
-                setState(() {
-                  animDuration = 200;
-                  xPosition = MediaQuery.of(context).size.width / 2;
-                  isSwiped = !isSwiped;
-                });
-              } else {
-                setState(() {
-                  animDuration = 200;
-                  xPosition = 0;
-                  isSwiped = !isSwiped;
-                });
-              }
-            },
-            child: Image.asset("assets/menus/menu.png", height: 25, width: 25),
-          ),
+          Positioned(
+              top: 15,
+              child: GestureDetector(
+                onTap: () {
+                  if (!isSwiped) {
+                    setState(() {
+                      animDuration = 200;
+                      xPosition = MediaQuery.of(context).size.width / 2;
+                      isSwiped = !isSwiped;
+                    });
+                  } else {
+                    setState(() {
+                      animDuration = 200;
+                      xPosition = 0;
+                      isSwiped = !isSwiped;
+                    });
+                  }
+                },
+                child:
+                    Image.asset("assets/menus/menu.png", height: 25, width: 25),
+              )),
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -416,6 +481,21 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
     );
   }
 
+  Widget _time(String time, String satuan) {
+    return Column(children: <Widget>[
+      Text(
+        time,
+        style: TextStyle(
+            color: Colors.white, fontSize: 46, fontWeight: FontWeight.bold),
+      ),
+      Text(
+        satuan,
+        style: TextStyle(
+            color: Colors.white, fontSize: 13, fontWeight: FontWeight.bold),
+      )
+    ]);
+  }
+
   Widget _listFight() {
     return ListView(
       padding: const EdgeInsets.all(0),
@@ -431,7 +511,7 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
               child: Container(
                 color: Colors.blue,
                 child: Image.asset(
-                  'assets/poster/ufc-241.png',
+                  'assets/poster/ufc251.jpg',
                   fit: BoxFit.fill,
                 ),
               ),
@@ -461,6 +541,35 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
                   ],
                 )),
             Positioned(
+                left: 15,
+                right: 15,
+                bottom: 20,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 5),
+                      child: Text(
+                        "EVENT STARTS IN",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      mainAxisSize: MainAxisSize.max,
+                      children: <Widget>[
+                        _time("00", "DAYS"),
+                        _time("07", "HOURS"),
+                        _time("33", "MINUTES"),
+                        _time("04", "SECONDS"),
+                      ],
+                    )
+                  ],
+                )),
+            Positioned(
               right: 0,
               left: 0,
               bottom: 0,
@@ -478,6 +587,13 @@ class _MoveableStackItemState extends State<MoveableStackItem> {
             )
           ],
         ),
+        otherEvent(
+            "brunsonufc.jpeg",
+            "LIVE THIS WEEK",
+            "UFC FIGHT NIGHT: BRUNSON VS SHAHBAZYAN PRELIMS",
+            "Sat,Aug 1,2020 9:00 Am"),
+        otherEvent("ufc-241.png", "LATER", "UFC 251: CORMIER VS MIOCIC",
+            "Sun,Aug 15,2020 9:00 Am"),
       ],
     );
   }
